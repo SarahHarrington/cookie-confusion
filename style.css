@@ -53,6 +53,10 @@ button#playAgain {
   padding-bottom: 1rem;
 }
 
+.hide-cookie {
+  display: none;
+}
+
 .card {
   height: 10rem;
   width: 10rem;

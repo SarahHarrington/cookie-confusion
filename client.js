@@ -10,7 +10,7 @@ document.getElementById("currentScore").innerHTML = 'Matches: ' + currentScore;
 document.getElementById("attempts").innerHTML = 'Attempts: ' + attempts;
 
 shuffle = (array) => {
-  let currentIndex = array.length, temporaryValue, randomIndex ;
+  let currentIndex = array.length, temporaryValue, randomIndex;
   while (0 !== currentIndex) {
     randomIndex = Math.floor(Math.random() * currentIndex);
     currentIndex -= 1;
@@ -21,23 +21,21 @@ shuffle = (array) => {
   return array;
 }
 
-clearClasses = (array) => {
-  array.forEach(card => card.classList.remove('orange', 'green', 'selected', 'matched'));
-}
-
 startGame = () => {
+  let cardDeck = document.getElementById('cardDeck');
+  cardDeck.innerHTML = ''
+  // console.log(cardDeck.children.length)
+  // while (cardDeck.children.length > 0) {
+  //   cardDeck.remove(cardDeck.firstChild)
+  // }
+
   makeCards()
-  // let card = document.getElementsByClassName('card');
-  // let cards = [...card];
   firstCard = null
   secondCard = null;
   currentScore = 0;
   attempts = 0;
-  clearClasses(cards);
-  // shuffle(cards);
   document.getElementById("currentScore").innerHTML = 'Matches: ' + currentScore;
   document.getElementById("attempts").innerHTML = 'Attempts: ' + attempts;
-  // cards.forEach(card => document.getElementById('cardDeck').appendChild(card));
 }
 
 makeCards = () => {
@@ -51,20 +49,23 @@ makeCards = () => {
   shuffle(gameCookies)
 
   console.log(gameCookies)
-  
+
   gameCookies.forEach((cookie) => {
     let newCard = document.createElement('div');
     newCard.classList.add('card');
     newCard.setAttribute('type', cookie.type);
+    newCard.addEventListener('click', selectedCard)
     let img = document.createElement('img')
     img.src = cookie.src;
     img.alt = cookie.alt;
+    img.classList.add('hide-cookie')
     newCard.append(img);
     document.getElementById('cardDeck').appendChild(newCard);
   })
 }
 
 function selectedCard(event) {
+  console.log(event)
   if (clearGuessTimeout !== null) {
     clearTimeout(clearGuessTimeout);
     clearGuess();
@@ -74,12 +75,12 @@ function selectedCard(event) {
   }
   else {
     event.currentTarget.classList.add('selected');
+    event.target.firstChild.classList.remove('hide-cookie')
     checkMatch(event.currentTarget);
   }
 }
 
 function checkMatch(cardGuess) {
-
   if (firstCard === null) {
     firstCard = cardGuess;
     firstCard.classList.add('green');
@@ -87,7 +88,7 @@ function checkMatch(cardGuess) {
 
   else if (secondCard === null) {
     secondCard = cardGuess;
-    if (firstCard.getAttribute('type') === secondCard.getAttribute('type') ) {
+    if (firstCard.getAttribute('type') === secondCard.getAttribute('type')) {
       firstCard.classList.add('matched');
       secondCard.classList.add('green');
       secondCard.classList.add('matched');
@@ -117,11 +118,11 @@ function clearGuess() {
   clearGuessTimeout = null;
   firstCard.classList.remove('orange', 'selected');
   secondCard.classList.remove('orange', 'selected');
+  firstCard.firstChild.classList.add('hide-cookie');
+  secondCard.firstChild.classList.add('hide-cookie');
   firstCard = null;
   secondCard = null;
 }
-
-
 
 var modal = document.getElementById('winnerPop');
 var modalContent = document.getElementById('winnerPopContent');
@@ -129,27 +130,27 @@ var modalClose = document.getElementById('close');
 var playAgain = document.getElementById('playAgain');
 
 function youWin() {
-  modal.style.display="flex";
+  modal.style.display = "flex";
   document.getElementById("winnerFinalTries").innerHTML = 'Final Attemps: ' + attempts;
   document.getElementById("winnerFinalScore").innerHTML = 'Total Matches: ' + currentScore;
 }
 
-modalClose.onclick = function() {
-  modal.style.display="none";
+modalClose.onclick = function () {
+  modal.style.display = "none";
 }
 
-playAgain.onclick = function() {
-  modal.style.display="none";
+playAgain.onclick = function () {
+  modal.style.display = "none";
   startGame();
 }
 
-window.onclick = function(event) {
+window.onclick = function (event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
 }
 
-startOverBtn.onclick = function() {
+startOverBtn.onclick = function () {
   console.log('start over clicked')
   startGame();
 }
