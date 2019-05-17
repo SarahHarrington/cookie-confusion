@@ -17,7 +17,7 @@ let cookies = [
   {
     type: 'chocdipbp',
     alt: 'Chocolate Dipped Peanut Butter Cookie with Sprinkles',
-    src: 'cookies/chocdipbp.png'
+    src: 'cookies/chocdipb.png'
   },
   {
     type: 'chocolate',

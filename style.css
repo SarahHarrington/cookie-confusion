@@ -4,14 +4,14 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  /* font-family: 'Righteous', cursive; */
-  font-family: 'Bungee Shade', cursive;
+  font-family: 'Righteous', cursive;
   color: #25283D;
 }
 
 header {
   font-size: 2rem;
   padding: 0;
+  font-family: 'Bungee Shade', cursive;
 }
 
 .container {

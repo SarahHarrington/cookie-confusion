@@ -1,5 +1,4 @@
-let card = document.getElementsByClassName('card');
-let cards = [...card];
+
 let firstCard = null
 let secondCard = null;
 let currentScore = 0;
@@ -9,9 +8,6 @@ let clearGuessTimeout = null;
 
 document.getElementById("currentScore").innerHTML = 'Matches: ' + currentScore;
 document.getElementById("attempts").innerHTML = 'Attempts: ' + attempts;
-
-
-
 
 shuffle = (array) => {
   let currentIndex = array.length, temporaryValue, randomIndex ;
@@ -31,15 +27,17 @@ clearClasses = (array) => {
 
 startGame = () => {
   makeCards()
+  // let card = document.getElementsByClassName('card');
+  // let cards = [...card];
   firstCard = null
   secondCard = null;
   currentScore = 0;
   attempts = 0;
   clearClasses(cards);
-  shuffle(cards);
+  // shuffle(cards);
   document.getElementById("currentScore").innerHTML = 'Matches: ' + currentScore;
   document.getElementById("attempts").innerHTML = 'Attempts: ' + attempts;
-  cards.forEach(card => document.getElementById('cardDeck').appendChild(card));
+  // cards.forEach(card => document.getElementById('cardDeck').appendChild(card));
 }
 
 makeCards = () => {
@@ -48,24 +46,22 @@ makeCards = () => {
   console.log(gameCookies)
 
   gameCookies.forEach(cookie => gameCookies.push(cookie));
-
   console.log(gameCookies)
 
   shuffle(gameCookies)
 
   console.log(gameCookies)
   
-  cookies.forEach((cookie) => {
+  gameCookies.forEach((cookie) => {
     let newCard = document.createElement('div');
     newCard.classList.add('card');
-    newCard.type = cookie.type;
-    let newImg = document.createElement('img')
-    newImg.src = cookie.src;
-    newImg.alt = cookie.alt;
-    newCard.append(newImg);
-    
+    newCard.setAttribute('type', cookie.type);
+    let img = document.createElement('img')
+    img.src = cookie.src;
+    img.alt = cookie.alt;
+    newCard.append(img);
+    document.getElementById('cardDeck').appendChild(newCard);
   })
-
 }
 
 function selectedCard(event) {
