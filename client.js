@@ -10,7 +10,63 @@ let clearGuessTimeout = null;
 document.getElementById("currentScore").innerHTML = 'Matches: ' + currentScore;
 document.getElementById("attempts").innerHTML = 'Attempts: ' + attempts;
 
-cards.forEach(card => card.addEventListener('click', selectedCard));
+
+
+
+shuffle = (array) => {
+  let currentIndex = array.length, temporaryValue, randomIndex ;
+  while (0 !== currentIndex) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+  return array;
+}
+
+clearClasses = (array) => {
+  array.forEach(card => card.classList.remove('orange', 'green', 'selected', 'matched'));
+}
+
+startGame = () => {
+  makeCards()
+  firstCard = null
+  secondCard = null;
+  currentScore = 0;
+  attempts = 0;
+  clearClasses(cards);
+  shuffle(cards);
+  document.getElementById("currentScore").innerHTML = 'Matches: ' + currentScore;
+  document.getElementById("attempts").innerHTML = 'Attempts: ' + attempts;
+  cards.forEach(card => document.getElementById('cardDeck').appendChild(card));
+}
+
+makeCards = () => {
+  shuffle(cookies);
+  let gameCookies = cookies.slice(0, 10);
+  console.log(gameCookies)
+
+  gameCookies.forEach(cookie => gameCookies.push(cookie));
+
+  console.log(gameCookies)
+
+  shuffle(gameCookies)
+
+  console.log(gameCookies)
+  
+  cookies.forEach((cookie) => {
+    let newCard = document.createElement('div');
+    newCard.classList.add('card');
+    newCard.type = cookie.type;
+    let newImg = document.createElement('img')
+    newImg.src = cookie.src;
+    newImg.alt = cookie.alt;
+    newCard.append(newImg);
+    
+  })
+
+}
 
 function selectedCard(event) {
   if (clearGuessTimeout !== null) {
@@ -69,33 +125,7 @@ function clearGuess() {
   secondCard = null;
 }
 
-shuffle = (array) => {
-  let currentIndex = array.length, temporaryValue, randomIndex ;
-  while (0 !== currentIndex) {
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex -= 1;
-    temporaryValue = array[currentIndex];
-    array[currentIndex] = array[randomIndex];
-    array[randomIndex] = temporaryValue;
-  }
-  return array;
-}
 
-clearClasses = (array) => {
-  array.forEach(card => card.classList.remove('orange', 'green', 'selected', 'matched'));
-}
-
-startGame = () => {
-  firstCard = null
-  secondCard = null;
-  currentScore = 0;
-  attempts = 0;
-  clearClasses(cards);
-  shuffle(cards);
-  document.getElementById("currentScore").innerHTML = 'Matches: ' + currentScore;
-  document.getElementById("attempts").innerHTML = 'Attempts: ' + attempts;
-  cards.forEach(card => document.getElementById('cardDeck').appendChild(card));
-}
 
 var modal = document.getElementById('winnerPop');
 var modalContent = document.getElementById('winnerPopContent');
