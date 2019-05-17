@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-112604530-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-112604530-2');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Cookies</title>
+  <link rel="stylesheet" href="vendors/fontawesome-all.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <h1>Cookie Confusion</h1>
+    </header>
+    
+    <section>
+      <h2 class="scoreArea" id="currentScore"></h2>
+      <h2 class="scoreArea" id="attempts"></h2>
+      <button id="startOverBtn"><i class="fas fa-redo-alt"></i></button>
+    </section>
+      
+    <!-- Deck of Cards Game Board> -->
+      <div class="deck" id="cardDeck">
+        <div class="card" type="butter">
+          <img src="cookies/butter.png" alt="">
+        </div>
+        <div class="card" type="carmeldelight">
+          <img src="cookies/carmeldelight.png" alt="">
+        </div>
+        <div class="card" type="chocchip">
+          <img src="cookies/chocchip.png" alt="">
+        </div>
+        <div class="card" type="chocdipbp">
+          <img src="cookies/chocdipbtr.png" alt="">
+        </div>
+        <div class="card" type="chocolate">
+          <img src="cookies/chocolate.png" alt="">
+        </div>
+        <div class="card" type="fortune">
+          <img src="cookies/fortune.png" alt="">
+        </div>
+        <div class="card" type="frostedsugar">
+          <img src="cookies/frostedsugar.png" alt="">
+        </div>
+        <div class="card" type="gfpumpkin">
+          <img src="cookies/gfpumpkin.png" alt="">
+        </div>
+        <div class="card" type="hmoreo">
+          <img src="cookies/hmoreo.png" alt="">
+        </div>
+        <div class="card" type="lemonsnowball">
+          <img src="cookies/lemonsnowball.png" alt="">
+        </div>
+        <div class="card" type="macaron">
+          <img src="cookies/macaron.png" alt="">
+        </div>
+        <div class="card" type="mandm">
+          <img src="cookies/mandm.png" alt="">
+        </div>
+        <div class="card" type="nutella">
+          <img src="cookies/nutella.png" alt="">
+        </div>
+        <div class="card" type="pbcup">
+          <img src="cookies/pbcup.png" alt="">
+        </div>
+        <div class="card" type="peanutbutter">
+          <img src="cookies/peanutbutter.png" alt="">
+        </div>
+        <div class="card" type="raspberrythumbprint">
+          <img src="cookies/raspberrythumbprint.png" alt="">
+        </div>
+        <div class="card" type="shortbread">
+          <img src="cookies/shortbread.png" alt="">
+        </div>
+        <div class="card" type="snickerdoodle">
+          <img src="cookies/snickerdoodle.png" alt="">
+        </div>
+        <div class="card" type="thinmints">
+          <img src="cookies/thinmints.png" alt="">
+        </div>
+        <div class="card" type="toastedcoconut">
+          <img src="cookies/toastedcoconut.png" alt="">
+        </div>
+      </div>
+    </div>
+
+    <div id="winnerPop">
+      <div id="winnerPopContent">
+        <span id="close"><i class="fas fa-times-circle"></i></span>
+        <p>You win!</p>
+        <p id="winnerFinalScore"></p>
+        <p id="winnerFinalTries"></p>
+        <i class="fas fa-thumbs-up"></i>
+        <br>
+        <button id="playAgain">Play Again</button>
+      </div>
+    </div>
+
+    <script src="client.js" defer="true"></script>
+</body>
+
+</html>
