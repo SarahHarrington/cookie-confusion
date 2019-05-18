@@ -24,11 +24,6 @@ shuffle = (array) => {
 startGame = () => {
   let cardDeck = document.getElementById('cardDeck');
   cardDeck.innerHTML = ''
-  // console.log(cardDeck.children.length)
-  // while (cardDeck.children.length > 0) {
-  //   cardDeck.remove(cardDeck.firstChild)
-  // }
-
   makeCards()
   firstCard = null
   secondCard = null;
@@ -41,15 +36,8 @@ startGame = () => {
 makeCards = () => {
   shuffle(cookies);
   let gameCookies = cookies.slice(0, 10);
-  console.log(gameCookies)
-
   gameCookies.forEach(cookie => gameCookies.push(cookie));
-  console.log(gameCookies)
-
   shuffle(gameCookies)
-
-  console.log(gameCookies)
-
   gameCookies.forEach((cookie) => {
     let newCard = document.createElement('div');
     newCard.classList.add('card');
@@ -65,7 +53,6 @@ makeCards = () => {
 }
 
 function selectedCard(event) {
-  console.log(event)
   if (clearGuessTimeout !== null) {
     clearTimeout(clearGuessTimeout);
     clearGuess();
@@ -151,9 +138,7 @@ window.onclick = function (event) {
 }
 
 startOverBtn.onclick = function () {
-  console.log('start over clicked')
   startGame();
 }
 
 startGame();
-
