@@ -65,8 +65,7 @@ button#playAgain {
   font-size: 0;
   margin: 1rem 1rem;
   list-style: none;
-  justify-self: center;
-  align-self: center;
+  place-self: center;
   display: flex;
   border-radius: 5px;
   cursor: pointer;
@@ -179,6 +178,10 @@ button#playAgain {
 @media only screen and (max-width: 600px) {
   header {
     text-align: center;
+  }
+
+  img {
+    height: 50%;
   }
 
   .deck {
