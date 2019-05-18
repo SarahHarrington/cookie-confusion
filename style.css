@@ -127,8 +127,8 @@ button#playAgain {
 #winnerPopContent {
   text-align: center;
   font-size: 2rem;
-  background-color: #B6C4CD;
-  color: #25283D;
+  background-color: #FAF8D4;
+  color: #130303;
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
   width: 50%; /* Could be more or less, depending on screen size */
